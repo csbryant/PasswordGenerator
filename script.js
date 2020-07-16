@@ -25,6 +25,12 @@ function randomSpecial() {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
+function randomForGen(q) {
+  return Math.floor(Math.random() * q + 1);
+}
+
+console.log(randomForGen(400));
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -54,7 +60,7 @@ function writePassword() {
       "Do you want to use special characters in your password?"
     );
   }
-  //If user clicks cancel for every character prompt
+  //If user clicks cancel for every character prompt (Needs to not pop up when length is too long)
   if (!confirmLower && !confirmUpper && !confirmNumber && !confirmSpecial) {
     alert("Your password requires at least one character!");
   }
@@ -108,5 +114,23 @@ function writePassword() {
     alert("Only Special");
   }
 
-  console.log(length);
+  //testing password generation
+  confirmed = "";
+
+  for (var i = 0; i < length; i++) {
+    var bob = randomNumber();
+    if (bob % 2 == 0) {
+      confirmed += randomLower();
+    } else {
+      confirmed += randomNumber();
+    }
+  }
+
+  /*
+  for (var i = 0; i < length; i++) {
+    (confirmed += randomNumber), randomLower();
+  }
+  */
+
+  console.log(confirmed);
 }
