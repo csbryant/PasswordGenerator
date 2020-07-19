@@ -1,4 +1,6 @@
 // Assignment Code
+
+//Variables
 var generateBtn = document.querySelector("#generate");
 
 var length;
@@ -7,6 +9,8 @@ var confirmUpper;
 var confirmNumber;
 var confirmSpecial;
 var confirmed;
+
+//Creates Random Characters
 
 function randomLower() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
@@ -26,10 +30,29 @@ function randomSpecial() {
 }
 
 function randomForGen(q) {
-  return Math.floor(Math.random() * q + 1);
+  return Math.floor(Math.random() * q);
 }
 
-console.log(randomForGen(400));
+// Function generates password depending on confirmed characters
+
+function generator() {
+  confirmed = "";
+  for (var i = 0; i < length; i++) {
+    var gen = randomForGen(4);
+    if (gen == 0 && confirmLower) {
+      confirmed += randomLower();
+    } else if (gen == 1 && confirmNumber) {
+      confirmed += randomNumber();
+    } else if (gen == 2 && confirmUpper) {
+      confirmed += randomUpper();
+    } else if (gen == 3 && confirmSpecial) {
+      confirmed += randomSpecial();
+    } else {
+      i--;
+    }
+  }
+  return confirmed;
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -42,8 +65,10 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-function writePassword() {
-  var length = prompt("Choose between 8 and 128 characters");
+// Function determines user input and selects which characters are confirmed based on prompts
+
+function generatePassword() {
+  length = prompt("Choose between 8 and 128 characters");
   if (!length) {
     alert("You need a length between 8 and 128 characters!");
   } else if (length < 8 || length > 128) {
@@ -55,82 +80,19 @@ function writePassword() {
     confirmUpper = confirm(
       "Do you want to use uppercase letters in your password?"
     );
-    confirmNumber = confirm("Do you want to use numbers in your password?");
+    confirmNumber = confirm(
+      "Do you want to use numbers in your password?"
+      );
     confirmSpecial = confirm(
       "Do you want to use special characters in your password?"
     );
-  }
-  //If user clicks cancel for every character prompt (Needs to not pop up when length is too long)
-  if (!confirmLower && !confirmUpper && !confirmNumber && !confirmSpecial) {
-    alert("Your password requires at least one character!");
-  }
-  //If user clicks ok for all 4 characters
-  if (confirmLower && confirmUpper && confirmNumber && confirmSpecial) {
-    alert("All 4!");
-  }
-  //If user clicks ok for 3 characters
-  if (confirmLower && confirmUpper && confirmNumber && !confirmSpecial) {
-    alert("Lower Upper and Number");
-  }
-  if (confirmLower && confirmUpper && confirmSpecial && !confirmNumber) {
-    alert("Lower Upper and Special");
-  }
-  if (confirmLower && confirmSpecial && confirmNumber && !confirmUpper) {
-    alert("Lower Special and Number");
-  }
-  if (confirmUpper && confirmSpecial && confirmNumber && !confirmLower) {
-    alert("Upper Special and Number");
-  }
-  //If user clicks ok for 2 characters
-  if (confirmLower && confirmUpper && !confirmNumber && !confirmSpecial) {
-    alert("Lower and upper");
-  }
-  if (confirmLower && confirmNumber && !confirmUpper && !confirmSpecial) {
-    alert("Lower and Number");
-  }
-  if (confirmLower && confirmSpecial && !confirmUpper && !confirmNumber) {
-    alert("Lower and Special");
-  }
-  if (confirmUpper && confirmNumber && !confirmSpecial && !confirmLower) {
-    alert("Upper and Number");
-  }
-  if (confirmUpper && confirmSpecial && !confirmNumber && !confirmLower) {
-    alert("Upper and Special");
-  }
-  if (confirmNumber && confirmSpecial && !confirmUpper && !confirmLower) {
-    alert("Number and Special");
-  }
-  //If user clicks ok for 1 character
-  if (confirmUpper && !confirmLower && !confirmNumber && !confirmSpecial) {
-    alert("Only Upper");
-  }
-  if (confirmLower && !confirmUpper && !confirmNumber && !confirmSpecial) {
-    alert("Only Lower");
-  }
-  if (confirmNumber && !confirmUpper && !confirmLower && !confirmSpecial) {
-    alert("Only Number");
-  }
-  if (confirmSpecial && !confirmUpper && !confirmLower && !confirmNumber) {
-    alert("Only Special");
-  }
-
-  //testing password generation
-  confirmed = "";
-
-  for (var i = 0; i < length; i++) {
-    var bob = randomNumber();
-    if (bob % 2 == 0) {
-      confirmed += randomLower();
+    //If user clicks cancel for every character prompt (Needs to not pop up when length is too long)
+    if (!confirmLower && !confirmUpper && !confirmNumber && !confirmSpecial) {
+      alert("Your password requires at least one character!");
     } else {
-      confirmed += randomNumber();
+      return generator();
     }
   }
-
-  /*
-  for (var i = 0; i < length; i++) {
-    (confirmed += randomNumber), randomLower();
-  }
-  */
-
-  console.log(confirmed);
+    //Returns a blank form if user chooses no, < 8, or > 128 characters
+  return "";
 }
