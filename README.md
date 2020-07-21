@@ -1,7 +1,5 @@
 ## PasswordGenerator
-
-![](images/1.png)
-<img src= "images/1.png">
+<img src= "https://raw.githubusercontent.com/csbryant/PasswordGenerator/master/Images/1.png">
 
 This password generator will create a password based on a user's criteria. The user will select in a series of prompts the password length and which characters should be used: uppercase letters, lowercase letters, special characters, and numbers. It requires a length of between 8 and 128 characters and must include at least one of the four characters to operate. 
 
