@@ -1,5 +1,6 @@
 ## PasswordGenerator
 
+<a href="https://csbryant.github.io/PasswordGenerator/">Link Here</a>
 
 <img src= "https://raw.githubusercontent.com/csbryant/PasswordGenerator/master/Images/1.png">
 
