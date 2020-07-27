@@ -2,7 +2,7 @@
 
 <a href="https://csbryant.github.io/PasswordGenerator/">Link Here</a>
 
-<img src= "https://raw.githubusercontent.com/csbryant/CodingQuiz/master/Images/1.png">
+<img src= "https://raw.githubusercontent.com/csbryant/PasswordGenerator/master/Images/1.png">
 
 
 
@@ -14,7 +14,7 @@ This password generator will create a password based on a user's criteria. The u
 
 
 
-<img src= "https://raw.githubusercontent.com/csbryant/CodingQuiz/master/Images/3.png">
+<img src= "https://raw.githubusercontent.com/csbryant/PasswordGenerator/master/Images/3.png">
 
 
 
